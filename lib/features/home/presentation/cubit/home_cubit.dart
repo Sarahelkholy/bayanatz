@@ -59,8 +59,7 @@ class HomeCubit extends Cubit<HomeState> {
     final result = await _createDashboard.call(dashboard: dashboard);
     switch (result) {
       case Success<DashboardEntity>():
-        _dashboards = [..._dashboards, result.data];
-        _emitLoaded();
+        await loadDashboards(); // re-fetch fresh list from Firestore
       case Failure<DashboardEntity>():
         emit(HomeFailure(result.errorMessage));
     }
