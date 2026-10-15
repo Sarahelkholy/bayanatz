@@ -34,7 +34,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'انتهت مهلة الاتصال.\nيرجى التحقق من الإنترنت والمحاولة مرة أخرى.';
 
   @override
-  String get searchDashboards => 'ابحث باسم لوحة التحكم';
+  String get searchDashboards => 'بحث';
 
   @override
   String dashboardCount(int count) {
@@ -70,19 +70,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contributor => 'مساهم';
 
   @override
-  String get applyFilters => 'تطبيق عوامل التصفية';
+  String get applyFilters => 'تطبيق';
 
   @override
-  String get filters => 'عوامل التصفية';
+  String get filters => 'تصفية';
 
   @override
-  String get filterDialogDescription => 'صفِّ لوحات التحكم حسب القسم والملكية.';
+  String get filterDialogDescription => 'صفِّ لوحات التحكم حسب القسم والملكية.';
 
   @override
-  String get clearFilters => 'مسح عوامل التصفية';
+  String get clearFilters => 'إعادة تعيين';
 
   @override
-  String get noDashboards => 'لا توجد لوحات بعد';
+  String get noDashboards => 'لا توجد لوحات';
 
   @override
   String get noSearchResults => 'لا توجد لوحات تطابق البحث أو عوامل التصفية.';
@@ -106,11 +106,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get createdAt => 'تاريخ الإنشاء';
 
   @override
-  String get noDescription => 'لا يوجد وصف.';
+  String get noDescription => 'لا يوجد وصف لهذه اللوحة.';
 
   @override
   String get close => 'إغلاق';
 
   @override
   String get untitledDashboard => 'لوحة بدون عنوان';
+
+  @override
+  String get createBoard => 'إنشاء لوحة';
+
+  @override
+  String get boardName => 'اسم اللوحة';
+
+  @override
+  String get departmentName => 'اسم القسم';
+
+  @override
+  String get owningStatus => 'حالة الملكية';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get create => 'إنشاء';
+
+  @override
+  String get pleaseEnterBoardName => 'يرجى إدخال اسم اللوحة';
+
+  @override
+  String get pleaseEnterDepartmentName => 'يرجى إدخال اسم القسم';
+
+  @override
+  String get pleaseSelectOwningStatus => 'يرجى اختيار حالة الملكية';
+
+  @override
+  String get pleaseEnterDescription => 'يرجى إدخال وصف';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get creationDate => 'تاريخ الإنشاء';
+
+  @override
+  String get noBoards => 'لا توجد لوحات';
 }

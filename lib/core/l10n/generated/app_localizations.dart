@@ -149,7 +149,7 @@ abstract class AppLocalizations {
   /// No description provided for @searchDashboards.
   ///
   /// In en, this message translates to:
-  /// **'Search by dashboard name'**
+  /// **'Search'**
   String get searchDashboards;
 
   /// No description provided for @dashboardCount.
@@ -197,13 +197,13 @@ abstract class AppLocalizations {
   /// No description provided for @applyFilters.
   ///
   /// In en, this message translates to:
-  /// **'Apply filters'**
+  /// **'Apply'**
   String get applyFilters;
 
   /// No description provided for @filters.
   ///
   /// In en, this message translates to:
-  /// **'Filters'**
+  /// **'Filter'**
   String get filters;
 
   /// No description provided for @filterDialogDescription.
@@ -215,13 +215,13 @@ abstract class AppLocalizations {
   /// No description provided for @clearFilters.
   ///
   /// In en, this message translates to:
-  /// **'Clear filters'**
+  /// **'Reset'**
   String get clearFilters;
 
   /// No description provided for @noDashboards.
   ///
   /// In en, this message translates to:
-  /// **'No dashboards yet'**
+  /// **'No boards found'**
   String get noDashboards;
 
   /// No description provided for @noSearchResults.
@@ -269,7 +269,7 @@ abstract class AppLocalizations {
   /// No description provided for @noDescription.
   ///
   /// In en, this message translates to:
-  /// **'No description provided.'**
+  /// **'No description available for this board.'**
   String get noDescription;
 
   /// No description provided for @close.
@@ -283,6 +283,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Untitled dashboard'**
   String get untitledDashboard;
+
+  /// No description provided for @createBoard.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Board'**
+  String get createBoard;
+
+  /// No description provided for @boardName.
+  ///
+  /// In en, this message translates to:
+  /// **'Board Name'**
+  String get boardName;
+
+  /// No description provided for @departmentName.
+  ///
+  /// In en, this message translates to:
+  /// **'Department Name'**
+  String get departmentName;
+
+  /// No description provided for @owningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Owning Status'**
+  String get owningStatus;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @pleaseEnterBoardName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a board name'**
+  String get pleaseEnterBoardName;
+
+  /// No description provided for @pleaseEnterDepartmentName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter department name'**
+  String get pleaseEnterDepartmentName;
+
+  /// No description provided for @pleaseSelectOwningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select owning status'**
+  String get pleaseSelectOwningStatus;
+
+  /// No description provided for @pleaseEnterDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a description'**
+  String get pleaseEnterDescription;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @creationDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation Date'**
+  String get creationDate;
+
+  /// No description provided for @noBoards.
+  ///
+  /// In en, this message translates to:
+  /// **'No boards found'**
+  String get noBoards;
 }
 
 class _AppLocalizationsDelegate

@@ -1,3 +1,5 @@
+import 'package:bayanatz/core/cubit/locale_cubit.dart';
+import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:bayanatz/core/helpers/my_responsive.dart';
 import 'package:bayanatz/features/home/presentation/widgets/create_board_dialog.dart';
 import 'package:bayanatz/features/home/presentation/widgets/dashboard_card.dart';
@@ -12,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final screenWidth = MediaQuery.of(context).size.width;
     bool isDesktop = screenWidth > 800;
@@ -29,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Task Management',
+                      l10n.taskManagement,
                       style: theme.textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: MyResponsive.fontSize(context, value: 24),
@@ -42,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       // Handle Dashboard action
                     },
                     icon: const Icon(Icons.dashboard_outlined),
-                    label: const Text('Dashboard'),
+                    label: Text(l10n.dashboard),
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       minimumSize: const Size(0, 40),
@@ -50,6 +53,44 @@ class HomeScreen extends StatelessWidget {
                           theme.colorScheme.surfaceContainerHighest,
                       foregroundColor: theme.colorScheme.onSurfaceVariant,
                     ),
+                  ),
+                  const SizedBox(width: 8),
+                  BlocBuilder<LocaleCubit, Locale>(
+                    builder: (context, locale) {
+                      final isArabic = locale.languageCode == 'ar';
+                      return Tooltip(
+                        message: isArabic ? 'Switch to English' : 'التبديل إلى العربية',
+                        child: InkWell(
+                          onTap: () => context.read<LocaleCubit>().toggle(),
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: theme.colorScheme.outline.withValues(alpha: 0.4),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  isArabic ? '🇬🇧' : '🇸🇦',
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  isArabic ? 'EN' : 'AR',
+                                  style: theme.textTheme.labelMedium?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -76,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         _buildCategoryChip(
                           context,
-                          'All',
+                          l10n.all,
                           totalDashboards.toString(),
                           selectedDept == null,
                           () =>
@@ -111,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                         onChanged: (query) =>
                             context.read<HomeCubit>().updateSearchQuery(query),
                         decoration: InputDecoration(
-                          hintText: 'Search',
+                          hintText: l10n.searchDashboards,
                           prefixIcon: const Icon(Icons.search),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
@@ -137,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                       icon: const Icon(Icons.tune),
-                      label: const Text('Filter'),
+                      label: Text(l10n.filters),
                       style: OutlinedButton.styleFrom(
                         padding: MyResponsive.paddingSymmetric(
                           context,
@@ -155,7 +196,7 @@ class HomeScreen extends StatelessWidget {
                     ElevatedButton.icon(
                       onPressed: () => _showCreateBoardDialog(context),
                       icon: const Icon(Icons.note_add_outlined),
-                      label: const Text('Create Board'),
+                      label: Text(l10n.createBoard),
                       style: ElevatedButton.styleFrom(
                         padding: MyResponsive.paddingSymmetric(
                           context,
@@ -179,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                       onChanged: (query) =>
                           context.read<HomeCubit>().updateSearchQuery(query),
                       decoration: InputDecoration(
-                        hintText: 'Search',
+                        hintText: l10n.searchDashboards,
                         prefixIcon: const Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
@@ -207,7 +248,7 @@ class HomeScreen extends StatelessWidget {
                               );
                             },
                             icon: const Icon(Icons.tune),
-                            label: const Text('Filter'),
+                            label: Text(l10n.filters),
                             style: OutlinedButton.styleFrom(
                               padding: MyResponsive.paddingSymmetric(
                                 context,
@@ -227,7 +268,7 @@ class HomeScreen extends StatelessWidget {
                           child: ElevatedButton.icon(
                             onPressed: () => _showCreateBoardDialog(context),
                             icon: const Icon(Icons.note_add_outlined),
-                            label: const Text('Create Board'),
+                            label: Text(l10n.createBoard),
                             style: ElevatedButton.styleFrom(
                               padding: MyResponsive.paddingSymmetric(
                                 context,
@@ -257,7 +298,7 @@ class HomeScreen extends StatelessWidget {
                     return Center(child: Text(state.message));
                   } else if (state is HomeLoaded) {
                     if (state.visibleDashboards.isEmpty) {
-                      return const Center(child: Text('No boards found'));
+                      return Center(child: Text(l10n.noDashboards));
                     }
                     return GridView.builder(
                       shrinkWrap: true,

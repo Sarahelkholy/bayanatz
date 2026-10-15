@@ -34,7 +34,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Connection timeout.\nPlease check your internet connection and try again.';
 
   @override
-  String get searchDashboards => 'Search by dashboard name';
+  String get searchDashboards => 'Search';
 
   @override
   String dashboardCount(int count) {
@@ -67,20 +67,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contributor => 'Contributor';
 
   @override
-  String get applyFilters => 'Apply filters';
+  String get applyFilters => 'Apply';
 
   @override
-  String get filters => 'Filters';
+  String get filters => 'Filter';
 
   @override
   String get filterDialogDescription =>
       'Narrow dashboards by department and ownership.';
 
   @override
-  String get clearFilters => 'Clear filters';
+  String get clearFilters => 'Reset';
 
   @override
-  String get noDashboards => 'No dashboards yet';
+  String get noDashboards => 'No boards found';
 
   @override
   String get noSearchResults => 'No dashboards match your search or filters.';
@@ -104,11 +104,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createdAt => 'Created';
 
   @override
-  String get noDescription => 'No description provided.';
+  String get noDescription => 'No description available for this board.';
 
   @override
   String get close => 'Close';
 
   @override
   String get untitledDashboard => 'Untitled dashboard';
+
+  @override
+  String get createBoard => 'Create Board';
+
+  @override
+  String get boardName => 'Board Name';
+
+  @override
+  String get departmentName => 'Department Name';
+
+  @override
+  String get owningStatus => 'Owning Status';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get pleaseEnterBoardName => 'Please enter a board name';
+
+  @override
+  String get pleaseEnterDepartmentName => 'Please enter department name';
+
+  @override
+  String get pleaseSelectOwningStatus => 'Please select owning status';
+
+  @override
+  String get pleaseEnterDescription => 'Please enter a description';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get creationDate => 'Creation Date';
+
+  @override
+  String get noBoards => 'No boards found';
 }

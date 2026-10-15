@@ -2,6 +2,7 @@
 // Purpose: Individual board/dashboard card item matching layout specifications.
 
 import 'package:bayanatz/core/helpers/my_responsive.dart';
+import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:bayanatz/features/home/domain/entities/dashboard_entity.dart';
 
@@ -13,14 +14,15 @@ class DashboardCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
-      padding: MyResponsive.paddingAll(context, value: 16), //[cite: 6]
+      padding: MyResponsive.paddingAll(context, value: 16),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(
           MyResponsive.radius(context, value: 16),
-        ), //[cite: 6]
+        ),
         border: Border.all(color: theme.dividerColor.withValues(alpha: 0.2)),
       ),
       child: Column(
@@ -38,7 +40,7 @@ class DashboardCardWidget extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        dashboard.boardName ?? 'Board Name',
+                        dashboard.boardName ?? l10n.untitledDashboard,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
@@ -66,7 +68,7 @@ class DashboardCardWidget extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  dashboard.owningStatus ?? 'Owner',
+                  dashboard.owningStatus ?? l10n.owner,
                   style: theme.textTheme.labelSmall,
                 ),
               ),
@@ -74,12 +76,12 @@ class DashboardCardWidget extends StatelessWidget {
           ),
           SizedBox(height: MyResponsive.height(context, value: 6)),
           Text(
-            'Department: ${dashboard.departmentName ?? 'N/A'}',
+            '${l10n.department}: ${dashboard.departmentName ?? 'N/A'}',
             style: theme.textTheme.bodySmall,
           ),
           SizedBox(height: MyResponsive.height(context, value: 10)),
           Text(
-            dashboard.description ?? 'No description available for this board.',
+            dashboard.description ?? l10n.noDescription,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodySmall?.copyWith(
@@ -91,7 +93,7 @@ class DashboardCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Creation Date: ${dashboard.createdAt ?? 'N/A'}',
+                '${l10n.createdAt}: ${dashboard.createdAt?.toString().split(' ')[0] ?? 'N/A'}',
                 style: theme.textTheme.labelSmall,
               ),
               const Text(

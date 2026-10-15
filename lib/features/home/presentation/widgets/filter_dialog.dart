@@ -1,4 +1,5 @@
 import 'package:bayanatz/core/helpers/my_responsive.dart';
+import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bayanatz/features/home/presentation/cubit/home_cubit.dart';
@@ -29,6 +30,7 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final homeState = context.watch<HomeCubit>().state;
     List<String> departments = [];
@@ -40,32 +42,32 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           MyResponsive.radius(context, value: 16),
-        ), //[cite: 6]
+        ),
       ),
       title: Row(
         children: [
           const Icon(Icons.tune),
-          SizedBox(width: MyResponsive.width(context, value: 12)), //[cite: 6]
-          Text('Filter', style: theme.textTheme.titleLarge),
+          SizedBox(width: MyResponsive.width(context, value: 12)),
+          Text(l10n.filters, style: theme.textTheme.titleLarge),
         ],
       ),
       content: SizedBox(
-        width: MyResponsive.width(context, value: 450), //[cite: 6]
+        width: MyResponsive.width(context, value: 450),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Creation Date Picker Field[cite: 1]
+              // Creation Date Picker Field
               TextFormField(
                 readOnly: true,
                 decoration: InputDecoration(
-                  labelText: 'Creation Date',
+                  labelText: l10n.creationDate,
                   suffixIcon: const Icon(Icons.calendar_today_outlined),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       MyResponsive.radius(context, value: 8),
-                    ), //[cite: 6]
+                    ),
                   ),
                 ),
                 controller: TextEditingController(
@@ -86,23 +88,19 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
                     });
                   }
                 },
-                validator: (value) {
-                  // Optional field check validation rule
-                  return null;
-                },
+                validator: (value) => null,
               ),
-              SizedBox(
-                height: MyResponsive.height(context, value: 16),
-              ), //[cite: 6]
-              // Department Dropdown[cite: 1]
+              SizedBox(height: MyResponsive.height(context, value: 16)),
+
+              // Department Dropdown
               DropdownButtonFormField<String>(
                 value: _selectedDepartment,
                 decoration: InputDecoration(
-                  labelText: 'Department',
+                  labelText: l10n.filterByDepartment,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       MyResponsive.radius(context, value: 8),
-                    ), //[cite: 6]
+                    ),
                   ),
                 ),
                 items: departments
@@ -116,26 +114,22 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
                     _selectedDepartment = value;
                   });
                 },
-                validator: (value) {
-                  return null;
-                },
+                validator: (value) => null,
               ),
-              SizedBox(
-                height: MyResponsive.height(context, value: 16),
-              ), //[cite: 6]
-              // Owning Status Dropdown[cite: 1, 3]
+              SizedBox(height: MyResponsive.height(context, value: 16)),
+
+              // Owning Status Dropdown
               DropdownButtonFormField<String>(
                 value: _selectedOwningState,
                 decoration: InputDecoration(
-                  labelText: 'Owning Status',
+                  labelText: l10n.owningStatus,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       MyResponsive.radius(context, value: 8),
-                    ), //[cite: 6]
+                    ),
                   ),
                 ),
-                items: HomeCubit
-                    .owningStateOptions //[cite: 3]
+                items: HomeCubit.owningStateOptions
                     .map(
                       (status) =>
                           DropdownMenuItem(value: status, child: Text(status)),
@@ -146,9 +140,7 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
                     _selectedOwningState = value;
                   });
                 },
-                validator: (value) {
-                  return null;
-                },
+                validator: (value) => null,
               ),
             ],
           ),
@@ -162,17 +154,17 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
               _selectedDepartment = null;
               _selectedOwningState = null;
             });
-            context.read<HomeCubit>().clearFilters(); //[cite: 3]
+            context.read<HomeCubit>().clearFilters();
             Navigator.of(context).pop();
           },
-          child: const Text('Reset'),
+          child: Text(l10n.clearFilters),
         ),
         ElevatedButton(
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               final cubit = context.read<HomeCubit>();
-              cubit.updateDepartment(_selectedDepartment); //[cite: 3]
-              cubit.updateOwningState(_selectedOwningState); //[cite: 3]
+              cubit.updateDepartment(_selectedDepartment);
+              cubit.updateOwningState(_selectedOwningState);
               Navigator.of(context).pop();
             }
           },
@@ -180,10 +172,10 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 MyResponsive.radius(context, value: 8),
-              ), //[cite: 6]
+              ),
             ),
           ),
-          child: const Text('Apply'),
+          child: Text(l10n.applyFilters),
         ),
       ],
     );

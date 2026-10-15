@@ -1,3 +1,4 @@
+import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bayanatz/features/home/domain/entities/dashboard_entity.dart';
@@ -28,13 +29,15 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      title: const Row(
+      title: Row(
         children: [
-          Icon(Icons.note_add_outlined),
-          SizedBox(width: 8),
-          Text('Create Board'),
+          const Icon(Icons.note_add_outlined),
+          const SizedBox(width: 8),
+          Text(l10n.createBoard),
         ],
       ),
       content: SizedBox(
@@ -48,9 +51,9 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
                 // Board Name
                 TextFormField(
                   controller: _boardNameController,
-                  decoration: const InputDecoration(labelText: 'Board Name'),
+                  decoration: InputDecoration(labelText: l10n.boardName),
                   validator: (value) => value == null || value.isEmpty
-                      ? 'Please enter a board name'
+                      ? l10n.pleaseEnterBoardName
                       : null,
                 ),
                 const SizedBox(height: 16),
@@ -58,19 +61,19 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
                 // Department Name
                 TextFormField(
                   controller: _departmentController,
-                  decoration: const InputDecoration(
-                    labelText: 'Department Name',
+                  decoration: InputDecoration(
+                    labelText: l10n.departmentName,
                   ),
                   validator: (value) => value == null || value.isEmpty
-                      ? 'Please enter department name'
+                      ? l10n.pleaseEnterDepartmentName
                       : null,
                 ),
                 const SizedBox(height: 16),
 
-                // Owning Status Dropdown (Using HomeCubit options: Owner, Contributor)
+                // Owning Status Dropdown
                 DropdownButtonFormField<String>(
                   value: _selectedOwningStatus,
-                  decoration: const InputDecoration(labelText: 'Owning Status'),
+                  decoration: InputDecoration(labelText: l10n.owningStatus),
                   items: HomeCubit.owningStateOptions.map((status) {
                     return DropdownMenuItem(value: status, child: Text(status));
                   }).toList(),
@@ -80,7 +83,7 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
                     });
                   },
                   validator: (value) => value == null || value.isEmpty
-                      ? 'Please select owning status'
+                      ? l10n.pleaseSelectOwningStatus
                       : null,
                 ),
                 const SizedBox(height: 16),
@@ -89,12 +92,12 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
                 TextFormField(
                   controller: _descriptionController,
                   maxLines: 3,
-                  decoration: const InputDecoration(
-                    labelText: 'Description',
+                  decoration: InputDecoration(
+                    labelText: l10n.description,
                     alignLabelWithHint: true,
                   ),
                   validator: (value) => value == null || value.isEmpty
-                      ? 'Please enter a description'
+                      ? l10n.pleaseEnterDescription
                       : null,
                 ),
               ],
@@ -105,7 +108,7 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
       actions: [
         OutlinedButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          child: Text(l10n.cancel),
         ),
         ElevatedButton(
           onPressed: () {
@@ -125,7 +128,7 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
               Navigator.of(context).pop();
             }
           },
-          child: const Text('Create'),
+          child: Text(l10n.create),
         ),
       ],
     );

@@ -8,7 +8,7 @@
   "taskManagement": "Task Management",
   "dashboard": "Dashboard",
   "connectionTimeoutMessage": "Connection timeout.\nPlease check your internet connection and try again.",
-  "searchDashboards": "Search by dashboard name",
+  "searchDashboards": "Search",
   "dashboardCount": "{count, plural, =0{No dashboards} one{{count} dashboard} other{{count} dashboards}}",
   "@dashboardCount": {
     "placeholders": {
@@ -23,11 +23,11 @@
   "allOwnership": "All ownership",
   "owner": "Owner",
   "contributor": "Contributor",
-  "applyFilters": "Apply filters",
-  "filters": "Filters",
+  "applyFilters": "Apply",
+  "filters": "Filter",
   "filterDialogDescription": "Narrow dashboards by department and ownership.",
-  "clearFilters": "Clear filters",
-  "noDashboards": "No dashboards yet",
+  "clearFilters": "Reset",
+  "noDashboards": "No boards found",
   "noSearchResults": "No dashboards match your search or filters.",
   "retry": "Try again",
   "dashboardDetails": "Dashboard details",
@@ -35,7 +35,21 @@
   "status": "Status",
   "description": "Description",
   "createdAt": "Created",
-  "noDescription": "No description provided.",
+  "noDescription": "No description available for this board.",
   "close": "Close",
-  "untitledDashboard": "Untitled dashboard"
+  "untitledDashboard": "Untitled dashboard",
+  "createBoard": "Create Board",
+  "boardName": "Board Name",
+  "departmentName": "Department Name",
+  "owningStatus": "Owning Status",
+  "cancel": "Cancel",
+  "create": "Create",
+  "pleaseEnterBoardName": "Please enter a board name",
+  "pleaseEnterDepartmentName": "Please enter department name",
+  "pleaseSelectOwningStatus": "Please select owning status",
+  "pleaseEnterDescription": "Please enter a description",
+  "all": "All",
+  "creationDate": "Creation Date",
+  "noBoards": "No boards found"
 }
+
