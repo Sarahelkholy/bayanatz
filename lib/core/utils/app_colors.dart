@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract final class AppColors {
   // Brand & Primary
-  static const Color primaryColor = Color(0xFFD21E6A);
+  static const Color primaryColor = Color(0xFF7D7D7D);
   static const Color lightPink = Color(0xFFF9ECF0);
 
   // Background & Surfaces
