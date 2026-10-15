@@ -1,0 +1,41 @@
+{
+  "@@locale": "ar",
+  "appTitle": "بيانات",
+  "home": "الرئيسية",
+  "welcomeMessage": "مرحبًا بك في بيانات!",
+  "homeSubtitle": "استعرض لوحاتك وتحكم بها.",
+  "pageNotFound": "الصفحة غير موجودة",
+  "taskManagement": "إدارة المهام",
+  "dashboard": "لوحة التحكم",
+  "connectionTimeoutMessage": "انتهت مهلة الاتصال.\nيرجى التحقق من الإنترنت والمحاولة مرة أخرى.",
+  "searchDashboards": "ابحث باسم لوحة التحكم",
+"dashboardCount": "{count, plural, zero{لا توجد لوحات} one{لوحة واحدة} two{لوحتان} few{{count} لوحات} many{{count} لوحة} other{{count} لوحة}}",
+  "@dashboardCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filterByDepartment": "القسم",
+  "filterByStatus": "الحالة",
+  "allDepartments": "كل الأقسام",
+  "allOwnership": "كل أنواع الملكية",
+  "owner": "مالك",
+  "contributor": "مساهم",
+  "applyFilters": "تطبيق عوامل التصفية",
+  "filters": "عوامل التصفية",
+  "filterDialogDescription": "صفِّ لوحات التحكم حسب القسم والملكية.",
+  "clearFilters": "مسح عوامل التصفية",
+  "noDashboards": "لا توجد لوحات بعد",
+  "noSearchResults": "لا توجد لوحات تطابق البحث أو عوامل التصفية.",
+  "retry": "إعادة المحاولة",
+  "dashboardDetails": "تفاصيل لوحة التحكم",
+  "department": "القسم",
+  "status": "الحالة",
+  "description": "الوصف",
+  "createdAt": "تاريخ الإنشاء",
+  "noDescription": "لا يوجد وصف.",
+  "close": "إغلاق",
+  "untitledDashboard": "لوحة بدون عنوان"
+}

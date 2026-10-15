@@ -1,0 +1,41 @@
+{
+  "@@locale": "en",
+  "appTitle": "Bayanatz",
+  "home": "Home",
+  "welcomeMessage": "Welcome to Bayanatz!",
+  "homeSubtitle": "Browse and manage your dashboards.",
+  "pageNotFound": "Page not found",
+  "taskManagement": "Task Management",
+  "dashboard": "Dashboard",
+  "connectionTimeoutMessage": "Connection timeout.\nPlease check your internet connection and try again.",
+  "searchDashboards": "Search by dashboard name",
+  "dashboardCount": "{count, plural, =0{No dashboards} one{{count} dashboard} other{{count} dashboards}}",
+  "@dashboardCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filterByDepartment": "Department",
+  "filterByStatus": "Status",
+  "allDepartments": "All departments",
+  "allOwnership": "All ownership",
+  "owner": "Owner",
+  "contributor": "Contributor",
+  "applyFilters": "Apply filters",
+  "filters": "Filters",
+  "filterDialogDescription": "Narrow dashboards by department and ownership.",
+  "clearFilters": "Clear filters",
+  "noDashboards": "No dashboards yet",
+  "noSearchResults": "No dashboards match your search or filters.",
+  "retry": "Try again",
+  "dashboardDetails": "Dashboard details",
+  "department": "Department",
+  "status": "Status",
+  "description": "Description",
+  "createdAt": "Created",
+  "noDescription": "No description provided.",
+  "close": "Close",
+  "untitledDashboard": "Untitled dashboard"
+}

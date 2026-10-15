@@ -1,0 +1,107 @@
+// File: dashboard_card_widget.dart
+// Purpose: Individual board/dashboard card item matching layout specifications.
+
+import 'package:bayanatz/core/helpers/my_responsive.dart';
+import 'package:flutter/material.dart';
+import 'package:bayanatz/features/home/domain/entities/dashboard_entity.dart';
+
+class DashboardCardWidget extends StatelessWidget {
+  const DashboardCardWidget({super.key, required this.dashboard});
+
+  final DashboardEntity dashboard;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: MyResponsive.paddingAll(context, value: 16), //[cite: 6]
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(
+          MyResponsive.radius(context, value: 16),
+        ), //[cite: 6]
+        border: Border.all(color: theme.dividerColor.withValues(alpha: 0.2)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(Icons.description_outlined),
+                    SizedBox(
+                      width: MyResponsive.width(context, value: 8),
+                    ),
+                    Expanded(
+                      child: Text(
+                        dashboard.boardName ?? 'Board Name',
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: MyResponsive.fontSize(
+                            context,
+                            value: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Container(
+                padding: MyResponsive.paddingSymmetric(
+                  context,
+                  horizontal: 8,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(
+                    MyResponsive.radius(context, value: 6),
+                  ),
+                ),
+                child: Text(
+                  dashboard.owningStatus ?? 'Owner',
+                  style: theme.textTheme.labelSmall,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: MyResponsive.height(context, value: 6)),
+          Text(
+            'Department: ${dashboard.departmentName ?? 'N/A'}',
+            style: theme.textTheme.bodySmall,
+          ),
+          SizedBox(height: MyResponsive.height(context, value: 10)),
+          Text(
+            dashboard.description ?? 'No description available for this board.',
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.7),
+            ),
+          ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Creation Date: ${dashboard.createdAt ?? 'N/A'}',
+                style: theme.textTheme.labelSmall,
+              ),
+              const Text(
+                '+6',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

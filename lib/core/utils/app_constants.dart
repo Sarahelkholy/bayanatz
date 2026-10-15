@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+abstract class AppConstants {
+  // static const String fontFamily = 'Cairo';
+  static const paddingHorizontal = 16.0;
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
+  static const String termsAndConditionsBaseUrl =
+      'https://elevate-flutter-team.github.io/flower_app_web_views/terms.html';
+
+  static const String aboutUsBaseUrl =
+      'https://elevate-flutter-team.github.io/flower_app_web_views/about.html';
+
+  static const String appPackageName = 'com.elevate.flower_app';
+}

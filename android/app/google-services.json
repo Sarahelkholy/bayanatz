@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948186515042",
+    "project_id": "bayanatz-19f08",
+    "storage_bucket": "bayanatz-19f08.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948186515042:android:4edcc6b8786ec9d6abf33b",
+        "android_client_info": {
+          "package_name": "com.example.bayanatz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWHLLUalmFvK7gvw2u3eoQaAJx50i4ImI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
