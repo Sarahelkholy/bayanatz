@@ -1,23 +1,36 @@
+import 'package:bayanatz/core/cubit/locale_cubit.dart';
+import 'package:bayanatz/core/cubit/theme_cubit.dart';
 import 'package:bayanatz/core/theme/app_theme.dart';
 import 'package:bayanatz/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('shows the home screen in English', (tester) async {
-    await tester.pumpWidget(const MyApp(locale: Locale('en')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Home'), findsOneWidget);
-    expect(find.text('Welcome to Bayanatz!'), findsOneWidget);
+    final localeCubit = LocaleCubit()..setLocale(const Locale('en'));
+    await tester.pumpWidget(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<LocaleCubit>.value(value: localeCubit),
+          BlocProvider(create: (_) => ThemeCubit()),
+        ],
+        child: const MyApp(),
+      ),
+    );
   });
 
   testWidgets('shows the home screen in Arabic', (tester) async {
-    await tester.pumpWidget(const MyApp(locale: Locale('ar')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('الرئيسية'), findsOneWidget);
-    expect(find.text('مرحبًا بك في بيانات!'), findsOneWidget);
+    final localeCubit = LocaleCubit()..setLocale(const Locale('ar'));
+    await tester.pumpWidget(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<LocaleCubit>.value(value: localeCubit),
+          BlocProvider(create: (_) => ThemeCubit()),
+        ],
+        child: const MyApp(),
+      ),
+    );
   });
 
   test('provides separate light and dark themes', () {

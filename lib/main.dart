@@ -2,6 +2,7 @@ import 'package:bayanatz/config/di/di.dart';
 import 'package:bayanatz/config/route_manager/route_generator.dart';
 import 'package:bayanatz/config/route_manager/routes.dart';
 import 'package:bayanatz/core/cubit/locale_cubit.dart';
+import 'package:bayanatz/core/cubit/theme_cubit.dart';
 import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:bayanatz/core/theme/app_theme.dart';
 import 'package:bayanatz/firebase_options.dart';
@@ -14,8 +15,11 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
   runApp(
-    BlocProvider(
-      create: (_) => LocaleCubit(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => LocaleCubit()),
+        BlocProvider(create: (_) => ThemeCubit()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -27,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = context.watch<LocaleCubit>().state;
+    final themeMode = context.watch<ThemeCubit>().state;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.homeRoute,
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: themeMode,
     );
   }
 }

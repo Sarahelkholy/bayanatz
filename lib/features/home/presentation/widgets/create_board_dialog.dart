@@ -72,7 +72,7 @@ class _CreateBoardDialogState extends State<CreateBoardDialog> {
 
                 // Owning Status Dropdown
                 DropdownButtonFormField<String>(
-                  value: _selectedOwningStatus,
+                  initialValue: _selectedOwningStatus,
                   decoration: InputDecoration(labelText: l10n.owningStatus),
                   items: HomeCubit.owningStateOptions.map((status) {
                     return DropdownMenuItem(value: status, child: Text(status));

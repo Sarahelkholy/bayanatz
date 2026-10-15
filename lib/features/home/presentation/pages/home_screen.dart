@@ -1,4 +1,5 @@
 import 'package:bayanatz/core/cubit/locale_cubit.dart';
+import 'package:bayanatz/core/cubit/theme_cubit.dart';
 import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:bayanatz/core/helpers/my_responsive.dart';
 import 'package:bayanatz/features/home/presentation/widgets/create_board_dialog.dart';
@@ -26,20 +27,23 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header Section
+              // Header Title Row
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text(
-                      l10n.taskManagement,
-                      style: theme.textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MyResponsive.fontSize(context, value: 24),
-                      ),
+                  Text(
+                    l10n.taskManagement,
+                    style: theme.textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: MyResponsive.fontSize(context, value: 20),
                     ),
                   ),
-                  const SizedBox(width: 12),
+                ],
+              ),
+              SizedBox(height: MyResponsive.height(context, value: 16)),
+
+              // Header Actions Row
+              Row(
+                children: [
                   ElevatedButton.icon(
                     onPressed: () {
                       // Handle Dashboard action
@@ -54,21 +58,28 @@ class HomeScreen extends StatelessWidget {
                       foregroundColor: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const Spacer(),
                   BlocBuilder<LocaleCubit, Locale>(
                     builder: (context, locale) {
                       final isArabic = locale.languageCode == 'ar';
                       return Tooltip(
-                        message: isArabic ? 'Switch to English' : 'التبديل إلى العربية',
+                        message: isArabic
+                            ? 'Switch to English'
+                            : 'التبديل إلى العربية',
                         child: InkWell(
                           onTap: () => context.read<LocaleCubit>().toggle(),
                           borderRadius: BorderRadius.circular(8),
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: theme.colorScheme.outline.withValues(alpha: 0.4),
+                                color: theme.colorScheme.outline.withValues(
+                                  alpha: 0.4,
+                                ),
                               ),
                             ),
                             child: Row(
@@ -86,6 +97,42 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  BlocBuilder<ThemeCubit, ThemeMode>(
+                    builder: (context, themeMode) {
+                      final isDark = themeMode == ThemeMode.dark;
+                      return Tooltip(
+                        message: isDark
+                            ? 'Switch to Light Mode'
+                            : 'Switch to Dark Mode',
+                        child: InkWell(
+                          onTap: () => context.read<ThemeCubit>().toggle(),
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: theme.colorScheme.outline.withValues(
+                                  alpha: 0.4,
+                                ),
+                              ),
+                            ),
+                            child: Icon(
+                              isDark
+                                  ? Icons.light_mode_rounded
+                                  : Icons.dark_mode_rounded,
+                              size: 20,
+                              color: theme.colorScheme.onSurface,
                             ),
                           ),
                         ),

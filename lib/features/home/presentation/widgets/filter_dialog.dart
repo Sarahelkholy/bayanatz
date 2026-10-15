@@ -94,7 +94,7 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
 
               // Department Dropdown
               DropdownButtonFormField<String>(
-                value: _selectedDepartment,
+                initialValue: _selectedDepartment,
                 decoration: InputDecoration(
                   labelText: l10n.filterByDepartment,
                   border: OutlineInputBorder(
@@ -120,7 +120,7 @@ class _FilterDialogWidgetState extends State<FilterDialogWidget> {
 
               // Owning Status Dropdown
               DropdownButtonFormField<String>(
-                value: _selectedOwningState,
+                initialValue: _selectedOwningState,
                 decoration: InputDecoration(
                   labelText: l10n.owningStatus,
                   border: OutlineInputBorder(

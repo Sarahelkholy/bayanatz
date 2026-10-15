@@ -7,7 +7,7 @@ abstract final class AppColors {
 
   // Background & Surfaces
   static const Color background = Color(
-    0xFFF4F5F7,
+    0xFFF5F5F5,
   ); // Light grey canvas from the design[cite: 1, 2]
   static const Color white = Color(
     0xFFFFFFFF,

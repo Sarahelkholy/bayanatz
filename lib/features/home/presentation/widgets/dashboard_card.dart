@@ -1,6 +1,3 @@
-// File: dashboard_card_widget.dart
-// Purpose: Individual board/dashboard card item matching layout specifications.
-
 import 'package:bayanatz/core/helpers/my_responsive.dart';
 import 'package:bayanatz/core/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -35,19 +32,14 @@ class DashboardCardWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.description_outlined),
-                    SizedBox(
-                      width: MyResponsive.width(context, value: 8),
-                    ),
+                    SizedBox(width: MyResponsive.width(context, value: 8)),
                     Expanded(
                       child: Text(
                         dashboard.boardName ?? l10n.untitledDashboard,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
-                          fontSize: MyResponsive.fontSize(
-                            context,
-                            value: 16,
-                          ),
+                          fontSize: MyResponsive.fontSize(context, value: 16),
                         ),
                       ),
                     ),
